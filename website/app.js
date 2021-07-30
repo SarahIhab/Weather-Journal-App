@@ -1,7 +1,7 @@
 /* Global Variables */
 
-let baseURL = "http://api.openweathermap.org/data/2.5/weather?zip=";
-let apiKey = ",us&appid=1d149aa11b20169bd2315498e3326ee8";
+const baseURL = "http://api.openweathermap.org/data/2.5/weather?zip=";
+const apiKey = ",us&appid=1d149aa11b20169bd2315498e3326ee8&units=metric";
 
 //This was causing errors in my code so I commented it out
 //const { response } = require("express");
@@ -78,17 +78,16 @@ const updateUI = async () => {
   const request = await fetch("/all");
   try {
     const allData = await request.json();
-
-    const allDataLength = allData.finalData.length;
+    const allDataLength = allData.data.length;
 
     document.getElementById("date").innerHTML =
-      allData.finalData[allDataLength - 1].date;
+      allData.data[allDataLength - 1].date;
 
     document.getElementById("temp").innerHTML =
-      allData.finalData[allDataLength - 1].temp;
+      allData.data[allDataLength - 1].temp;
 
     document.getElementById("content").innerHTML =
-      allData.finalData[allDataLength - 1].userResponse;
+      allData.data[allDataLength - 1].userResponse;
   } catch (err) {
     console.log(err);
   }

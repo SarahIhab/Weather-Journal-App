@@ -8,7 +8,7 @@ const apiKey = ",us&appid=1d149aa11b20169bd2315498e3326ee8&units=metric";
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
+let newDate = d.getMonth() + 1 + "." + d.getDate() + "." + d.getFullYear();
 
 //GET Request to fetch data from the app endpoint
 const getData = async (url = "", data = {}) => {
@@ -82,6 +82,8 @@ const updateUI = async () => {
 
     document.getElementById("date").innerHTML =
       allData.data[allDataLength - 1].date;
+
+    //document.getElementById("date").innerHTML = newDate;
 
     document.getElementById("temp").innerHTML =
       allData.data[allDataLength - 1].temp;
